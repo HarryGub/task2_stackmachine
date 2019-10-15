@@ -16,8 +16,11 @@
 // #include <...
 
 namespace xi {
-
-// TODO: add method definitions here
+    IntStack::IntStack(size_t sz) {
+        _ssize = 0;
+        _stack = new int[0];
+        _head = _stack[0];
+    }
 
 } // namespace xi
 

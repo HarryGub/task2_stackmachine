@@ -21,11 +21,11 @@
 
 // TODO: Uncomment operations from your variant!!
 #define PLUS_OP       // default
-//#define MINUS_OP      // variant 1
-//#define MULT_OP       // variant 2
+#define MINUS_OP      // variant 1
+#define MULT_OP       // variant 2
 //#define DIV_OP        // variant 3
 //#define CHOICE_OP     // variant 4
-//#define ASSIGN_OP     // variant 5
+#define ASSIGN_OP     // variant 5
 //#define SIG_CHANGE_OP // variant 6
 //#define INVER_OP      // variant 7
 //#define AND_OP        // variant 8
