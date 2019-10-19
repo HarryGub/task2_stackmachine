@@ -12,15 +12,71 @@
 
 #include "int_stack.h"
 
-// TODO: add necessary headers here
-// #include <...
+#include <stdexcept>
 
 namespace xi {
-    IntStack::IntStack(size_t sz) {
+    // Constructors
+    IntStack::IntStack(size_t sz){
+        _ssize = sz;
+        _stack = new int[STACK_SIZE];
+        _head = 0;
+    }
+    IntStack::~IntStack(){
+        delete[] _stack;
         _ssize = 0;
-        _stack = new int[0];
-        _head = _stack[0];
+        _head = 0;
     }
 
-} // namespace xi
+    void IntStack::push(int el){
+        if(isFull()){
+            throw std::logic_error("Stack is already full!");
+        } else{
+            _stack[_head] = el;
+            _head++;
+        }
+    }
+
+    int IntStack::pop(){
+        if(isEmpty()){
+            throw std::logic_error("Stack is empty!");
+        } else{
+            int res = _stack[_head - 1];
+            _head--;
+            _stack[_head] = 0;
+            return res;
+        }
+    }
+
+    int IntStack::top(){
+        if(isEmpty()){
+            throw std::logic_error("Stack is empty!");
+        } else{
+            return _stack[_head - 1];
+        }
+    }
+
+    void IntStack::clear(){
+        for(int i = 0; i < _head;i++){
+            _stack[i] = 0;
+        }
+        _head = 0;
+    }
+
+    bool IntStack::isEmpty() const{
+        if(_head == 0){
+            return true;
+        } else{
+            return false;
+        }
+    }
+
+    bool IntStack::isFull() const{
+        if(_head == _ssize){
+            return true;
+        } else{
+            return false;
+        }
+    }
+
+}
 
