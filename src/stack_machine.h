@@ -21,11 +21,11 @@
 
 // TODO: Uncomment operations from your variant!!
 #define PLUS_OP       // default
-//#define MINUS_OP      // variant 1
-//#define MULT_OP       // variant 2
+#define MINUS_OP      // variant 1
+#define MULT_OP       // variant 2
 //#define DIV_OP        // variant 3
 //#define CHOICE_OP     // variant 4
-//#define ASSIGN_OP     // variant 5
+#define ASSIGN_OP     // variant 5
 //#define SIG_CHANGE_OP // variant 6
 //#define INVER_OP      // variant 7
 //#define AND_OP        // variant 8
@@ -83,13 +83,7 @@ protected:
  *  Note, that IOperation interface should be inherited with public modifier
  */
 class PlusOp : public IOperation {
-//public:
-//    virtual ~PlusOp() {}
 public:
-    // IOperation interface overriding
-    // We explicitly use virtual keyword to point out the virtual nature of the methods
-
-    /** If a given operator symb is not '+", an exception is thrown*/
     virtual int operation(char op, int a, int b, int c) override;
     virtual Arity getArity() const override;
 }; // class PlusOp
@@ -97,13 +91,17 @@ public:
 
 #ifdef MINUS_OP
 class MinusOp : public IOperation {
-// TODO Implement virtual methods like in PlusOp class
+public:
+    virtual int operation(char op, int a, int b, int c) override;
+    virtual Arity getArity() const override;
 };
 #endif
 
 #ifdef MULT_OP
 class MultOp : public IOperation {
-// TODO Implement virtual methods like in PlusOp class
+public:
+    virtual int operation(char op, int a, int b, int c) override;
+    virtual Arity getArity() const override;
 };
 #endif
 
@@ -121,7 +119,9 @@ class ChoiceOp : public IOperation {
 
 #ifdef ASSIGN_OP
 class AssignOp : public IOperation {
-// TODO Implement virtual methods like in PlusOp class
+public:
+    virtual int operation(char op, int a, int b, int c) override;
+    virtual Arity getArity() const override;
 };
 #endif
 
@@ -205,7 +205,6 @@ protected:
     SymbolToOperMap _opers;
 
     /** Common stack
-     *
      *  One can define an operation, that pushes, pops or tops stack and, thus, the stack
      *  can be used being shared among multiple machine invocations
      */
