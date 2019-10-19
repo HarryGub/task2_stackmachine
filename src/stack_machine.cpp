@@ -152,4 +152,4 @@ IOperation::Arity MinusOp::getArity() const {
         }
         return _s.top();
     }
-}
+}//namespace xi
